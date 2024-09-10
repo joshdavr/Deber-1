@@ -1,0 +1,33 @@
+def comparar_cadenas(cadena1, cadena2):
+    if len(cadena1) != len(cadena2): #si las cadenas tienen una longitud distinta no tendrá la suficiente cantidad en una para comparar con otra, por eso se incia con esta.
+        print("Las cadenas tienen diferentes longitudes.")
+        return
+
+    diferencias = [] #crea la lista en la que se agregarán las diferencias si existen.
+
+    for i in range(len(cadena1)):
+        if cadena1[i] != cadena2[i]:                        #comprueba si el carácter en la posición i de la cadena 1 es diferente al carácter en la misma posición i de la cadena 2.
+            diferencias.append((i, cadena1[i], cadena2[i])) #añade un nuevo elemento al final de la lista.
+                                                            #i: la posición en la que se encontró la diferencia.
+                                                            #cadena1[i]: el carácter de cadena1 en la posición i.
+                                                            #cadena2[i]: el carácter de cadena2 en la misma posición i.
+
+    if diferencias:
+        print("Las cadenas son distintas en las siguientes posiciones:")
+        for dif in diferencias:
+            difInt=dif[0]
+            print(f"Posición {difInt+1}: '{dif[1]}' en la cadena 1, '{dif[2]}' en la cadena 2") #muestra la posición en la que cambian y en que cambian.
+    else:
+        print("Las cadenas son iguales.") #solo si las cadenas no tiene diferencias se imprime.
+
+sec=input('Ingresa una cadena de ADN: ')
+sec2=input('Ingresa otra cadena de ADN: ') #solicita al usuario ingresar las cadenas a comparar.
+secm1 = sec.upper()
+secm2= sec2.upper() #hace los elementos ingresados en mayúscula, para entender con mayor facilidad.
+valid1 = secm1.count("A") + secm1.count("C") + secm1.count("G") + secm1.count("T")
+valid2 = secm2.count("A") + secm2.count("C") + secm2.count("G") + secm2.count("T") #validan que las secuencias secm1 y secm2 contengan solo bases nitrogenadas válidas.
+if valid1==len(secm1) and valid2==len(secm2):
+    print(f'Comparando las cadenas: {secm1} y {secm2}')
+    (comparar_cadenas(secm1, secm2))
+else:
+    print('La cadena no es válida') #si la cadena contiene letras o caracteres no permitidos.
